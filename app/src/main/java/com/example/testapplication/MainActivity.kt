@@ -25,11 +25,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     var id by remember { mutableStateOf(0) }
-    val contentModel by remember { derivedStateOf { ContentModel(id) } }
+    val contentModel = ContentModel(id)
 
-    ContentScreen(contentModel) {
+    ContentScreen(contentModel, nextModel = {
         id = Random.nextInt(1000)
-    }
+    })
 }
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
